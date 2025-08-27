@@ -1,0 +1,140 @@
+{/* This file is used to configure the deployment settings for Vercel. */
+  "version": 2,
+  "builds": [
+    {
+      "src": "**/*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "images/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "icons/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "videos/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=3600, s-maxage=3600"
+      },
+      "dest": "/$1"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/locations",
+      "destination": "/locations.html"
+    },
+    {
+      "source": "/evservices",
+      "destination": "/evservices.html"
+    },
+    {
+      "source": "/faq",
+      "destination": "/faqs.html"
+    },
+    {
+      "source": "/faqs",
+      "destination": "/faqs.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    },
+    {
+      "source": "/news",
+      "destination": "/news.html"
+    },
+    {
+      "source": "/register",
+      "destination": "/register-accommodation.html"
+    },
+    {
+      "source": "/register-accommodation",
+      "destination": "/register-accommodation.html"
+    },
+    {
+      "source": "/list-property",
+      "destination": "/register-accommodation.html"
+    },
+    {
+      "source": "/partner",
+      "destination": "/register-accommodation.html"
+    },
+    {
+      "source": "/news/start-summit-2025",
+      "destination": "/news/start-summit-2025.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/aboutus.html"
+    },
+    {
+      "source": "/aboutus",
+      "destination": "/aboutus.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/icons/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/videos/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ],
+  "trailingSlash": false,
+  "cleanUrls": true
+}

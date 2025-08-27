@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - ElectriStay</title>
+    <meta name="description" content="Find answers to frequently asked questions about ElectriStay's EV-friendly accommodations, charging services, booking process, and amenities.">
+    <link rel="icon" type="image/x-icon" href="./icons/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* CSS Custom Properties for consistent theming */
+        :root {
+            --primary-color: #000;
+            --secondary-color: #fff;
+            --accent-color: #00d4ff;
+            --accent-dark: #0099cc;
+            --text-primary: #fff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --transition-speed: 0.3s;
+            --border-radius: 12px;
+            --shadow-light: 0 2px 20px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 5px 30px rgba(0, 0, 0, 0.2);
+            --shadow-heavy: 0 10px 50px rgba(0, 0, 0, 0.3);
+            --gradient-primary: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            --gradient-dark: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            --max-width: 1400px;
+            --section-padding: 120px 0;
+            --mobile-padding: 80px 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        body {
+            color: var(--text-primary);
+            background-color: var(--primary-color);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* Header - Modern style */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            transition: all var(--transition-speed) ease;
+        }
+
+        header.scrolled {
+            background: rgba(0, 0, 0, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 40px;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+                
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-img {
+            height: 35px;
+            width: auto;
+        }
+        
+        .logo {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Navigation */
+        .navigation-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .navigation {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .navigation a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+            transition: color var(--transition-speed) ease;
+            padding: 5px 0;
+        }
+        
+        .navigation a:hover,
+        .navigation a.active {
+            color: var(--text-primary);
+        }
+        
+        .navigation a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width var(--transition-speed) ease;
+        }
+
+        .navigation a:hover::after,
+        .navigation a.active::after {
+            width: 100%;
+        }
+
+        /* CTA Button */
+        .list-property-btn {
+            background: var(--gradient-primary);
+            color: var(--text-primary);
+            padding: 10px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all var(--transition-speed) ease;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.2);
+        }
+
+        .list-property-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Hamburger Menu */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--text-primary);
+            border-radius: 3px;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .hamburger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background-color: #0a0a0a;
+            transition: right var(--transition-speed) ease;
+            z-index: 999;
+            padding: 80px 30px;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .mobile-nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .mobile-nav a:hover,
+        .mobile-nav a.active {
+            color: var(--accent-color);
+        }
+
+        .list-property-btn-mobile {
+            background: var(--gradient-primary);
+            color: var(--text-primary);
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Main Content */
+        main {
+            margin-top: 70px;
+        }
+        
+        /* Page Hero */
+        .page-hero {
+            background: var(--gradient-dark);
+            padding: 120px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(0, 153, 204, 0.1) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--accent-color);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .page-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #fff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: var(--section-padding);
+            background: var(--primary-color);
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        /* FAQ Groups */
+        .faq-groups {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+        
+        .faq-group {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 48px;
+            transition: all var(--transition-speed) ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faq-group::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(0, 212, 255, 0.05), transparent 50%);
+            opacity: 0;
+            transition: opacity var(--transition-speed) ease;
+        }
+        
+        .faq-group:hover::before {
+            opacity: 1;
+        }
+        
+        .faq-group:hover {
+            border-color: rgba(0, 212, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.05);
+        }
+        
+        .category-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 36px;
+            color: var(--text-primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-primary);
+            border-radius: 3px;
+        }
+        
+        /* FAQ Items */
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 28px 0;
+            cursor: pointer;
+            font-size: 1.15rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: all var(--transition-speed) ease;
+            gap: 24px;
+        }
+        
+        .faq-question:hover {
+            color: var(--accent-color);
+        }
+        
+        .faq-question .icon {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            transform-origin: center;
+            transition: transform var(--transition-speed) ease;
+            flex-shrink: 0;
+        }
+        
+        .faq-question.active .icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-speed) ease;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            padding: 0;
+            font-size: 1.05rem;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .faq-answer.active {
+            max-height: 1000px;
+            padding-bottom: 28px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .faq-answer p {
+            padding-right: 40px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .cta-container {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--text-primary);
+            padding: 16px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all var(--transition-speed) ease;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.2);
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            padding: 16px 40px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all var(--transition-speed) ease;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #0a0a0a;
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color var(--transition-speed) ease;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 900px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navigation-container {
+                display: none;
+            }
+
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .page-hero {
+                padding: 100px 0 80px;
+            }
+
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .page-hero p {
+                font-size: 1.1rem;
+            }
+
+            .faq-section {
+                padding: 60px 0;
+            }
+
+            .faq-group {
+                padding: 32px 24px;
+            }
+
+            .category-title {
+                font-size: 1.6rem;
+            }
+
+            .faq-question {
+                font-size: 1.05rem;
+                padding: 20px 0;
+            }
+
+            .faq-answer {
+                font-size: 1rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-section p {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .footer-content {
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-container,
+            .container {
+                padding: 0 20px;
+            }
+
+            .page-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .faq-group {
+                padding: 24px 16px;
+                border-radius: 16px;
+            }
+
+            .category-title {
+                font-size: 1.4rem;
+            }
+
+            .faq-question {
+                font-size: 1rem;
+            }
+
+            .faq-answer p {
+                padding-right: 20px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection styling */
+        ::selection {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #444;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-container">
+                    <img src="./images/logo_E.png" alt="ElectriStay Logo" class="logo-img">
+                    <span>ELECTRISTAY</span>
+                </div>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <div class="navigation-container">
+                <nav class="navigation">
+                    <a href="index.html">Home</a>
+                    <a href="locations.html">Locations</a>
+                    <a href="evservices.html">EV Services</a>
+                    <a href="news.html">News & Updates</a>
+                    <a href="#" class="active">FAQ</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+                
+                <a href="register-accommodation.html" class="list-property-btn">List Your Property</a>
+            </div>
+            
+            <!-- Hamburger Menu Icon -->
+            <div class="hamburger-menu" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-nav">
+            <a href="index.html">Home</a>
+            <a href="locations.html">Locations</a>
+            <a href="evservices.html">EV Services</a>
+            <a href="news.html">News & Updates</a>
+            <a href="#" class="active">FAQ</a>
+            <a href="contact.html">Contact</a>
+            <a href="register-accommodation.html" class="list-property-btn-mobile">List Your Property</a>
+        </nav>
+    </div>
+    
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- Main Content -->
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero">
+            <div class="page-hero-content">
+                <div class="hero-badge">Help & Support</div>
+                <h1>Frequently Asked Questions</h1>
+                <p>Find answers to common questions about our EV-friendly accommodations and charging services.</p>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <div class="faq-groups">
+                    <!-- General FAQ Group -->
+                    <div class="faq-group">
+                        <h2 class="category-title">General Questions</h2>
+                        <div class="faq-questions">
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <span>What is ElectriStay?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>ElectriStay is a premium platform connecting electric vehicle owners with hotels and accommodations that offer guaranteed EV charging stations. We ensure seamless charging experiences while you travel, making EV road trips stress-free and convenient.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <span>How does ElectriStay work?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Simply search for accommodations in your desired location, filter by charging requirements (speed, connector type), and book directly through our platform. Upon arrival, your charging spot is guaranteed and ready to use. Our smart system manages reservations and ensures availability.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <span>Is ElectriStay available in my area?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>ElectriStay is rapidly expanding across Europe, starting with Switzerland. Check our Locations page for current availability. We're adding new partner hotels monthly and plan to cover major European cities by the end of 2025.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Booking FAQ Group -->
+                    <div class="faq-group">
+                        <h2 class="category-title">Booking & Reservations</h2>
+                        <div class="faq-questions">
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <span>How do I book a stay with guaranteed EV charging?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Browse our available properties on the Locations page, select your desired accommodation, and follow the booking process. You can filter properties by location, price range, and specific EV charging requirements. Your charging spot is automatically reserved with your room booking.</ического>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <span>Can I modify or cancel my reservation?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Yes, you can modify or cancel your reservation through your ElectriStay account. Our standard cancellation policy allows free cancellation up to 48 hours before check-in. Some properties may have specific policies, which will be clearly stated during booking.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <span>What if I arrive and the charging station is occupied?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>This won't happen! Our reservation system guarantees your charging spot. If there's an unexpected issue, our 24/7 support team will immediately arrange an alternative charging solution at no extra cost, including access to nearby partner stations if needed.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charging FAQ Group -->
+                    <div class="faq-group">
+                        <h2 class="category-title">EV Charging Services</h2>
+                        <div class="faq-questions">
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <span>What types of EV chargers are available?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Our network includes Level 2 AC chargers (up to 22kW) and DC fast chargers (up to 350kW). All locations support Type 2 connectors, with many also offering CCS and CHAdeMO. Tesla drivers can use our chargers with appropriate adapters.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <span>How much does charging cost?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Charging costs vary by location and are transparently displayed during booking. Many properties offer complimentary charging with overnight stays. Where fees apply, they're typically 20-30% below public charging rates. All costs are clearly shown before you confirm your booking.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <span>Can I charge overnight?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Absolutely! All our partner hotels provide overnight charging, ensuring you wake up to a fully charged vehicle. Our smart scheduling system optimizes charging to take advantage of off-peak rates where available, saving you money.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <span>Is the charging equipment reliable?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Yes! We only partner with hotels that maintain professional-grade charging equipment. All stations are monitored 24/7, undergo regular maintenance, and have 99.5%+ uptime. Real-time status updates are available through our app.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment FAQ Group -->
+                    <div class="faq-group">
+                        <h2 class="category-title">Payment & Pricing</h2>
+                        <div class="faq-questions">
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <span>What payment methods are accepted?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>We accept all major credit and debit cards (Visa, Mastercard, American Express), PayPal, Apple Pay, and Google Pay. For corporate accounts, we offer invoicing options. All transactions are secured with bank-level encryption.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <span>Are there any hidden fees?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Never! We believe in complete transparency. All costs, including accommodation, charging fees (if any), and taxes are clearly displayed before you confirm your booking. The price you see is the price you pay.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <span>Do you offer corporate accounts?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Yes, we offer tailored corporate solutions with centralized billing, detailed reporting, and special rates for frequent travelers. Contact our business team to set up your corporate account and enjoy simplified expense management.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property Partners FAQ Group -->
+                    <div class="faq-group">
+                        <h2 class="category-title">For Property Partners</h2>
+                        <div class="faq-questions">
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <span>How can my hotel join ElectriStay?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>We're always looking for quality hotel partners! Click "List Your Property" to start the application process. We'll assess your property, help plan charging infrastructure if needed, and guide you through our onboarding process. Most properties go live within 30 days.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <span>What if my hotel doesn't have EV chargers yet?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>No problem! We offer comprehensive support for properties looking to install EV charging. Our team provides consultation on equipment selection, installation partners, and can even help arrange financing. We make going electric easy and profitable.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <span>What are the benefits for partner hotels?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Partner hotels see an average 35% increase in EV guest bookings, higher RevPAR, and improved sustainability credentials. Our platform handles all charging reservations, provides 24/7 technical support, and drives qualified traffic to your property.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-container">
+                <h2>Still Have Questions?</h2>
+                <p>Our support team is here to help you 24/7. Get in touch and we'll respond within minutes.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn-primary">Contact Support</a>
+                    <a href="tel:+41234567890" class="btn-secondary">Call Us Now</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="locations.html">Locations</a></li>
+                        <li><a href="evservices.html">EV Services</a></li>
+                        <li><a href="news.html">News & Updates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="faqs.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Partners</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ElectriStay. All rights reserved.</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        overlay.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // FAQ accordion functionality
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const icon = this.querySelector('.icon');
+                const currentGroup = this.closest('.faq-group');
+                const allQuestionsInGroup = currentGroup.querySelectorAll('.faq-question');
+                const allAnswersInGroup = currentGroup.querySelectorAll('.faq-answer');
+                
+                // Close all other items in the same group
+                allQuestionsInGroup.forEach((q, index) => {
+                    if (q !== this) {
+                        q.classList.remove('active');
+                        allAnswersInGroup[index].classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                this.classList.toggle('active');
+                answer.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

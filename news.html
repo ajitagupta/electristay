@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectriStay - News & Updates</title>
+    <meta name="description" content="Stay informed about the latest developments in ElectriStay's EV charging network, technology updates, and upcoming events.">
+    <link rel="icon" type="image/x-icon" href="./icons/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* CSS Custom Properties for consistent theming */
+        :root {
+            --primary-color: #000;
+            --secondary-color: #fff;
+            --accent-color: #00d4ff;
+            --accent-dark: #0099cc;
+            --text-primary: #fff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --transition-speed: 0.3s;
+            --border-radius: 12px;
+            --shadow-light: 0 2px 20px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 5px 30px rgba(0, 0, 0, 0.2);
+            --shadow-heavy: 0 10px 50px rgba(0, 0, 0, 0.3);
+            --gradient-primary: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            --gradient-dark: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            --max-width: 1400px;
+            --section-padding: 120px 0;
+            --mobile-padding: 80px 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        body {
+            color: var(--text-primary);
+            background-color: var(--primary-color);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* Header - Modern style matching evservices */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            transition: all var(--transition-speed) ease;
+        }
+
+        header.scrolled {
+            background: rgba(0, 0, 0, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 40px;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-img {
+            height: 35px;
+            width: auto;
+        }
+        
+        .logo {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Navigation */
+        .navigation-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .navigation {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .navigation a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+            transition: color var(--transition-speed) ease;
+            padding: 5px 0;
+        }
+        
+        .navigation a:hover,
+        .navigation a.active {
+            color: var(--text-primary);
+        }
+        
+        .navigation a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width var(--transition-speed) ease;
+        }
+
+        .navigation a:hover::after,
+        .navigation a.active::after {
+            width: 100%;
+        }
+
+        /* CTA Button */
+        .list-property-btn {
+            background: var(--gradient-primary);
+            color: var(--text-primary);
+            padding: 10px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all var(--transition-speed) ease;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.2);
+        }
+
+        .list-property-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Hamburger Menu */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--text-primary);
+            border-radius: 3px;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .hamburger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background-color: #0a0a0a;
+            transition: right var(--transition-speed) ease;
+            z-index: 999;
+            padding: 80px 30px;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .mobile-nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .mobile-nav a:hover,
+        .mobile-nav a.active {
+            color: var(--accent-color);
+        }
+
+        .list-property-btn-mobile {
+            background: var(--gradient-primary);
+            color: var(--text-primary);
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 70px;
+        }
+
+        /* Page Hero */
+        .page-hero {
+            background: var(--gradient-dark);
+            padding: 120px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(0, 153, 204, 0.1) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .page-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #fff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Container */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* News Section */
+        .news-section {
+            padding: var(--section-padding);
+            background-color: var(--primary-color);
+        }
+
+        /* News Filter */
+        .news-filter {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .filter-button {
+            padding: 10px 24px;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .filter-button.active {
+            background: var(--gradient-primary);
+            color: var(--text-primary);
+            border-color: transparent;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.2);
+        }
+        
+        .filter-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+        
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+        
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all var(--transition-speed) ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.1);
+        }
+
+        .news-card.featured-news {
+            grid-column: 1 / -1;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .news-image {
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .featured-news .news-image {
+            height: 400px;
+        }
+        
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-speed) ease;
+        }
+        
+        .news-card:hover .news-image img {
+            transform: scale(1.05);
+        }
+        
+        .news-content {
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .news-category {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+        
+        .category-technology {
+            background-color: rgba(0, 212, 255, 0.1);
+            color: var(--accent-color);
+        }
+        
+        .category-expansion {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: #4CAF50;
+        }
+        
+        .category-events {
+            background-color: rgba(255, 152, 0, 0.1);
+            color: #FF9800;
+        }
+        
+        .category-press {
+            background-color: rgba(156, 39, 176, 0.1);
+            color: #9C27B0;
+        }
+        
+        .news-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            line-height: 1.3;
+            color: var(--text-primary);
+        }
+
+        .featured-news .news-title {
+            font-size: 1.8rem;
+        }
+        
+        .news-excerpt {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+        
+        .news-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .read-more {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .read-more:hover {
+            gap: 12px;
+            color: var(--accent-color);
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 80px;
+        }
+        
+        .page-number {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .page-number.active {
+            background: var(--gradient-primary);
+            color: var(--text-primary);
+            border-color: transparent;
+        }
+        
+        .page-number:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+        
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            padding: 80px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .newsletter-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        .newsletter-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        
+        .newsletter-section p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 16px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 14px 24px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .newsletter-input::placeholder {
+            color: var(--text-secondary);
+        }
+        
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+        
+        .newsletter-submit {
+            padding: 14px 32px;
+            background: var(--gradient-primary);
+            color: var(--text-primary);
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.2);
+        }
+        
+        .newsletter-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(0, 212, 255, 0.3);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #0a0a0a;
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color var(--transition-speed) ease;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .news-grid {
+                grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 20px;
+            }
+
+            .navigation-container {
+                display: none;
+            }
+
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .page-hero {
+                padding: 100px 0 80px;
+            }
+
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .page-hero p {
+                font-size: 1.1rem;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .news-section {
+                padding: 60px 0;
+            }
+
+            .news-filter {
+                gap: 12px;
+            }
+
+            .filter-button {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .news-card.featured-news {
+                grid-column: 1;
+            }
+
+            .featured-news .news-image {
+                height: 300px;
+            }
+
+            .news-content {
+                padding: 24px;
+            }
+
+            .news-title {
+                font-size: 1.3rem;
+            }
+
+            .featured-news .news-title {
+                font-size: 1.5rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                padding: 0 20px;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .news-grid {
+                padding: 0 10px;
+            }
+
+            .news-card {
+                border-radius: 16px;
+            }
+
+            .news-image {
+                height: 200px;
+            }
+
+            .featured-news .news-image {
+                height: 250px;
+            }
+
+            .news-content {
+                padding: 20px;
+            }
+
+            .news-title {
+                font-size: 1.2rem;
+            }
+
+            .pagination {
+                gap: 6px;
+            }
+
+            .page-number {
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection styling */
+        ::selection {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #444;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-container">
+                    <img src="./images/logo_E.png" alt="ElectriStay Logo" class="logo-img">
+                    <span>ELECTRISTAY</span>
+                </div>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <div class="navigation-container">
+                <nav class="navigation">
+                    <a href="index.html">Home</a>
+                    <a href="locations.html">Locations</a>
+                    <a href="evservices.html">EV Services</a>
+                    <a href="#" class="active">News & Updates</a>
+                    <a href="faqs.html">FAQ</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+                
+                <a href="register-accommodation.html" class="list-property-btn">List Your Property</a>
+            </div>
+            
+            <!-- Hamburger Menu Icon -->
+            <div class="hamburger-menu" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-nav">
+            <a href="index.html">Home</a>
+            <a href="locations.html">Locations</a>
+            <a href="evservices.html">EV Services</a>
+            <a href="#" class="active">News & Updates</a>
+            <a href="faqs.html">FAQ</a>
+            <a href="contact.html">Contact</a>
+            <a href="register-accommodation.html" class="list-property-btn-mobile">List Your Property</a>
+        </nav>
+    </div>
+    
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- Main Content -->
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero">
+            <div class="page-hero-content">
+                <h1>News & Updates</h1>
+                <p>Stay informed about the latest developments in our network, technology updates, and upcoming events.</p>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section class="news-section">
+            <div class="container">
+                <!-- News Filter -->
+                <div class="news-filter">
+                    <button class="filter-button active">All</button>
+                    <button class="filter-button">Network Expansion</button>
+                    <button class="filter-button">Technology Updates</button>
+                    <button class="filter-button">Events & Partnerships</button>
+                    <button class="filter-button">Press Releases</button>
+                </div>
+                
+                <!-- News Grid -->
+                <div class="news-grid">
+                    <!-- Featured News -->
+                    <div class="news-card featured-news">
+                        <div class="news-image">
+                            <img src="./images/news/start-summit-2025.jpg" alt="START Summit 2025 Event">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category category-events">Events & Partnerships</span>
+                            <h3 class="news-title">ElectriStay Showcases EV Charging Solutions at START Summit 2025</h3>
+                            <p class="news-excerpt">Our team recently attended the prestigious START Summit in St. Gallen, connecting with leading AI companies and investors to accelerate our European expansion plans and showcase our innovative charging technology solutions.</p>
+                            <div class="news-meta">
+                                <div class="news-date">
+                                    <span>March 22, 2025</span>
+                                </div>
+                                <a href="news/start-summit-2025.html" class="read-more">Read more →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- News Item 1 -->
+                    <div class="news-card">
+                        <div class="news-image">
+                            <img src="https://placehold.co/400x300/222/fff?text=AI+Charging+Update" alt="AI Charging System Update">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category category-technology">Technology Update</span>
+                            <h3 class="news-title">Smart Charging System Gets Major AI Upgrade</h3>
+                            <p class="news-excerpt">Our proprietary charging management system has received a substantial AI upgrade, now predicting guest charging needs with 95% accuracy and reducing charging costs by up to 30%.</p>
+                            <div class="news-meta">
+                                <div class="news-date">
+                                    <span>February 18, 2025</span>
+                                </div>
+                                <a href="#" class="read-more">Read more →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- News Item 2 -->
+                    <div class="news-card">
+                        <div class="news-image">
+                            <img src="https://placehold.co/400x300/222/fff?text=Network+Expansion" alt="Network Expansion">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category category-expansion">Network Expansion</span>
+                            <h3 class="news-title">ElectriStay Expands to 100+ Locations Across Switzerland</h3>
+                            <p class="news-excerpt">We're thrilled to announce a major milestone: ElectriStay's charging network now spans over 100 premium hotel locations throughout Switzerland, offering EV travelers unprecedented convenience.</p>
+                            <div class="news-meta">
+                                <div class="news-date">
+                                    <span>February 5, 2025</span>
+                                </div>
+                                <a href="#" class="read-more">Read more →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- News Item 3 -->
+                    <div class="news-card">
+                        <div class="news-image">
+                            <img src="https://placehold.co/400x300/222/fff?text=Partnership" alt="Strategic Partnership">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category category-events">Events & Partnerships</span>
+                            <h3 class="news-title">Strategic Partnership with Leading Swiss Hotel Chain</h3>
+                            <p class="news-excerpt">ElectriStay partners with Switzerland's premier hotel group to install fast-charging stations at 25 luxury properties, marking a significant step in our mission to electrify hospitality.</p>
+                            <div class="news-meta">
+                                <div class="news-date">
+                                    <span>January 22, 2025</span>
+                                </div>
+                                <a href="#" class="read-more">Read more →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- News Item 4 -->
+                    <div class="news-card">
+                        <div class="news-image">
+                            <img src="https://placehold.co/400x300/222/fff?text=Sustainability" alt="Sustainability Achievement">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category category-press">Press Release</span>
+                            <h3 class="news-title">ElectriStay Achieves Carbon-Neutral Charging Network Status</h3>
+                            <p class="news-excerpt">We're proud to announce that our entire charging network is now carbon-neutral, thanks to our renewable energy investments and comprehensive carbon offset programs.</p>
+                            <div class="news-meta">
+                                <div class="news-date">
+                                    <span>January 15, 2025</span>
+                                </div>
+                                <a href="#" class="read-more">Read more →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- News Item 5 -->
+                    <div class="news-card">
+                        <div class="news-image">
+                            <img src="https://placehold.co/400x300/222/fff?text=App+Update" alt="Mobile App Update">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category category-technology">Technology Update</span>
+                            <h3 class="news-title">ElectriStay Mobile App 3.0 Now Available</h3>
+                            <p class="news-excerpt">Download the latest version of our mobile app featuring enhanced trip planning tools, real-time charging status notifications, and seamless reservation management.</p>
+                            <div class="news-meta">
+                                <div class="news-date">
+                                    <span>January 8, 2025</span>
+                                </div>
+                                <a href="#" class="read-more">Read more →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="pagination">
+                    <a href="#" class="page-number active">1</a>
+                    <a href="#" class="page-number">2</a>
+                    <a href="#" class="page-number">3</a>
+                    <a href="#" class="page-number">4</a>
+                    <a href="#" class="page-number">›</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <div class="newsletter-container">
+                <h2>Stay Connected</h2>
+                <p>Subscribe to our newsletter to receive the latest updates about new locations, technology improvements, and exclusive offers.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                    <button type="submit" class="newsletter-submit">Subscribe</button>
+                </form>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="locations.html">Locations</a></li>
+                        <li><a href="evservices.html">EV Services</a></li>
+                        <li><a href="news.html">News & Updates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="faqs.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Partners</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ElectriStay. All rights reserved.</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        overlay.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // News filtering functionality
+        const filterButtons = document.querySelectorAll('.filter-button');
+        const newsCards = document.querySelectorAll('.news-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Filter logic would go here
+                // For now, it just changes the active button
+            });
+        });
+
+        // Newsletter form
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Handle newsletter submission
+                alert('Thank you for subscribing!');
+                this.reset();
+            });
+        }
+    </script>
+</body>
+</html>
