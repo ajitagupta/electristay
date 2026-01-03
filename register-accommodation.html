@@ -1211,6 +1211,17 @@
                                 </select>
                             </div>
                         </div>
+                        
+                        <div class="form-row single">
+                            <div class="form-group">
+                                <label for="charger-access">Charger Access</label>
+                                <select id="charger-access" name="charger-access" class="form-select">
+                                    <option value="">Select Access Type</option>
+                                    <option value="public">Public</option>
+                                    <option value="guests-only">For Guests Only</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     
                     <!-- Contact Information -->
@@ -1219,13 +1230,13 @@
                         
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="contact-name">Contact Name <span class="required">*</span></label>
-                                <input type="text" id="contact-name" name="contact-name" class="form-input" placeholder="John Doe" required>
+                                <label for="contact-name">Contact Name</label>
+                                <input type="text" id="contact-name" name="contact-name" class="form-input" placeholder="John Doe">
                             </div>
                             
                             <div class="form-group">
-                                <label for="contact-position">Position <span class="required">*</span></label>
-                                <input type="text" id="contact-position" name="contact-position" class="form-input" placeholder="General Manager" required>
+                                <label for="contact-position">Position</label>
+                                <input type="text" id="contact-position" name="contact-position" class="form-input" placeholder="General Manager">
                             </div>
                         </div>
                         
@@ -1236,8 +1247,8 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="contact-phone">Phone Number <span class="required">*</span></label>
-                                <input type="tel" id="contact-phone" name="contact-phone" class="form-input" placeholder="+41 44 123 4567" required>
+                                <label for="contact-phone">Phone Number</label>
+                                <input type="tel" id="contact-phone" name="contact-phone" class="form-input" placeholder="+41 44 123 4567">
                             </div>
                         </div>
                         
@@ -1446,13 +1457,14 @@
             emailBody += `Number of Stations: ${formData.get('num-stations') || 'Not specified'}\n`;
             emailBody += `Charging Type: ${formData.get('charging-type') || 'Not specified'}\n`;
             emailBody += `Total Parking Spaces: ${formData.get('parking-spaces') || 'Not specified'}\n`;
-            emailBody += `Charging Fee Structure: ${formData.get('charging-fee') || 'Not specified'}\n\n`;
+            emailBody += `Charging Fee Structure: ${formData.get('charging-fee') || 'Not specified'}\n`;
+            emailBody += `Charger Access: ${formData.get('charger-access') || 'Not specified'}\n\n`;
             
             emailBody += '=== CONTACT INFORMATION ===\n';
-            emailBody += `Name: ${formData.get('contact-name')}\n`;
-            emailBody += `Position: ${formData.get('contact-position')}\n`;
+            emailBody += `Name: ${formData.get('contact-name') || 'Not provided'}\n`;
+            emailBody += `Position: ${formData.get('contact-position') || 'Not provided'}\n`;
             emailBody += `Email: ${formData.get('contact-email')}\n`;
-            emailBody += `Phone: ${formData.get('contact-phone')}\n`;
+            emailBody += `Phone: ${formData.get('contact-phone') || 'Not provided'}\n`;
             emailBody += `Additional Info: ${formData.get('additional-info') || 'None'}\n`;
             emailBody += `Newsletter: ${formData.get('newsletter') ? 'Yes' : 'No'}\n`;
             emailBody += `Terms Accepted: Yes`;
