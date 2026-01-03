@@ -356,6 +356,7 @@
             background: radial-gradient(circle at top right, rgba(0, 212, 255, 0.05), transparent 50%);
             opacity: 0;
             transition: opacity var(--transition-speed) ease;
+            pointer-events: none;
         }
         
         .faq-group:hover::before {
@@ -409,6 +410,8 @@
             font-weight: 500;
             transition: all var(--transition-speed) ease;
             gap: 24px;
+            user-select: none;
+            -webkit-user-select: none;
         }
         
         .faq-question:hover {
@@ -421,6 +424,11 @@
             transform-origin: center;
             transition: transform var(--transition-speed) ease;
             flex-shrink: 0;
+            pointer-events: none;
+        }
+        
+        .faq-question span {
+            pointer-events: none;
         }
         
         .faq-question.active .icon {
@@ -786,191 +794,221 @@
         <section class="faq-section">
             <div class="container">
                 <div class="faq-groups">
-                    <!-- General FAQ Group -->
+                    <!-- About ElectriStay -->
                     <div class="faq-group">
-                        <h2 class="category-title">General Questions</h2>
+                        <h2 class="category-title">About ElectriStay</h2>
                         <div class="faq-questions">
                             <div class="faq-item">
-                                <div class="faq-question">
+                                <div class="faq-question" onclick="toggleFaq(this)">
                                     <span>What is ElectriStay?</span>
                                     <i class="fas fa-chevron-down icon"></i>
                                 </div>
                                 <div class="faq-answer">
-                                    <p>ElectriStay is a premium platform connecting electric vehicle owners with hotels and accommodations that offer guaranteed EV charging stations. We ensure seamless charging experiences while you travel, making EV road trips stress-free and convenient.</p>
+                                    <p>ElectriStay is an AI-powered booking platform that connects electric vehicle travelers with hotels offering guaranteed EV charging. Unlike traditional charging apps that focus only on finding stations, we integrate charging into your accommodation booking—so you can reserve both your room and your charging slot in one seamless experience. We're based in Switzerland and focused on making EV travel stress-free.</p>
                                 </div>
                             </div>
                             
                             <div class="faq-item">
-                                <div class="faq-question">
-                                    <span>How does ElectriStay work?</span>
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>How is ElectriStay different from other EV charging apps?</span>
                                     <i class="fas fa-chevron-down icon"></i>
                                 </div>
                                 <div class="faq-answer">
-                                    <p>Simply search for accommodations in your desired location, filter by charging requirements (speed, connector type), and book directly through our platform. Upon arrival, your charging spot is guaranteed and ready to use. Our smart system manages reservations and ensures availability.</p>
+                                    <p>Most charging apps help you find available stations—but availability isn't guaranteed when you arrive. ElectriStay takes a hospitality-first approach: when you book a hotel through our platform, your charging spot is reserved along with your room. Our AI-powered system also optimizes charging times and pricing, suggesting the best slots based on your check-in/check-out schedule and current electricity rates.</p>
                                 </div>
                             </div>
 
                             <div class="faq-item">
-                                <div class="faq-question">
-                                    <span>Is ElectriStay available in my area?</span>
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>Where is ElectriStay available?</span>
                                     <i class="fas fa-chevron-down icon"></i>
                                 </div>
                                 <div class="faq-answer">
-                                    <p>ElectriStay is rapidly expanding across Europe, starting with Switzerland. Check our Locations page for current availability. We're adding new partner hotels monthly and plan to cover major European cities by the end of 2025.</p>
+                                    <p>We're launching in Switzerland with plans to expand across Europe. Switzerland is ideal for EV travel with its excellent infrastructure and high EV adoption rates. Check our Locations page for current partner properties, and sign up for updates as we add new destinations.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Booking FAQ Group -->
+                    <!-- For EV Travelers -->
                     <div class="faq-group">
-                        <h2 class="category-title">Booking & Reservations</h2>
+                        <h2 class="category-title">For EV Travelers</h2>
                         <div class="faq-questions">
                             <div class="faq-item">
-                                <div class="faq-question">
-                                    <span>How do I book a stay with guaranteed EV charging?</span>
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>How do I book accommodation with EV charging?</span>
                                     <i class="fas fa-chevron-down icon"></i>
                                 </div>
                                 <div class="faq-answer">
-                                    <p>Browse our available properties on the Locations page, select your desired accommodation, and follow the booking process. You can filter properties by location, price range, and specific EV charging requirements. Your charging spot is automatically reserved with your room booking.</ического>
+                                    <p>Search for hotels on our platform by destination, dates, and your EV's charging requirements (connector type, charging speed). When you book your room, you'll see available charging slots and can reserve one that fits your schedule. The system automatically suggests optimal charging times based on electricity rates and your departure time.</p>
                                 </div>
                             </div>
                             
                             <div class="faq-item">
-                                <div class="faq-question">
-                                    <span>Can I modify or cancel my reservation?</span>
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>Is my charging spot guaranteed?</span>
                                     <i class="fas fa-chevron-down icon"></i>
                                 </div>
                                 <div class="faq-answer">
-                                    <p>Yes, you can modify or cancel your reservation through your ElectriStay account. Our standard cancellation policy allows free cancellation up to 48 hours before check-in. Some properties may have specific policies, which will be clearly stated during booking.</p>
+                                    <p>Yes! When you book through ElectriStay, your charging slot is reserved just like your hotel room. No more arriving at a hotel only to find all chargers occupied. If any unexpected issue arises, our support team will arrange alternative charging at no extra cost.</p>
                                 </div>
                             </div>
 
                             <div class="faq-item">
-                                <div class="faq-question">
-                                    <span>What if I arrive and the charging station is occupied?</span>
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>What types of EVs and connectors are supported?</span>
                                     <i class="fas fa-chevron-down icon"></i>
                                 </div>
                                 <div class="faq-answer">
-                                    <p>This won't happen! Our reservation system guarantees your charging spot. If there's an unexpected issue, our 24/7 support team will immediately arrange an alternative charging solution at no extra cost, including access to nearby partner stations if needed.</p>
+                                    <p>Our partner hotels offer various charger types including Type 2 (standard in Europe), CCS for fast charging, and CHAdeMO. Each property listing shows available connector types and charging speeds. You can filter search results by your vehicle's requirements to find compatible accommodations.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>Can I charge overnight while I sleep?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Absolutely—this is one of the main benefits of hotel-based charging. Our smart system can schedule your charging during off-peak hours (typically overnight) when electricity is cheapest, so you wake up to a full battery and lower costs. You'll receive a notification when charging is complete.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Charging FAQ Group -->
+                    <!-- Pricing & Payments -->
                     <div class="faq-group">
-                        <h2 class="category-title">EV Charging Services</h2>
+                        <h2 class="category-title">Pricing & Payments</h2>
                         <div class="faq-questions">
                             <div class="faq-item">
-                                <div class="faq-question">
-                                    <span>What types of EV chargers are available?</span>
-                                    <i class="fas fa-chevron-down icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <p>Our network includes Level 2 AC chargers (up to 22kW) and DC fast chargers (up to 350kW). All locations support Type 2 connectors, with many also offering CCS and CHAdeMO. Tesla drivers can use our chargers with appropriate adapters.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="faq-item">
-                                <div class="faq-question">
+                                <div class="faq-question" onclick="toggleFaq(this)">
                                     <span>How much does charging cost?</span>
                                     <i class="fas fa-chevron-down icon"></i>
                                 </div>
                                 <div class="faq-answer">
-                                    <p>Charging costs vary by location and are transparently displayed during booking. Many properties offer complimentary charging with overnight stays. Where fees apply, they're typically 20-30% below public charging rates. All costs are clearly shown before you confirm your booking.</p>
-                                </div>
-                            </div>
-
-                            <div class="faq-item">
-                                <div class="faq-question">
-                                    <span>Can I charge overnight?</span>
-                                    <i class="fas fa-chevron-down icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <p>Absolutely! All our partner hotels provide overnight charging, ensuring you wake up to a fully charged vehicle. Our smart scheduling system optimizes charging to take advantage of off-peak rates where available, saving you money.</p>
-                                </div>
-                            </div>
-
-                            <div class="faq-item">
-                                <div class="faq-question">
-                                    <span>Is the charging equipment reliable?</span>
-                                    <i class="fas fa-chevron-down icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <p>Yes! We only partner with hotels that maintain professional-grade charging equipment. All stations are monitored 24/7, undergo regular maintenance, and have 99.5%+ uptime. Real-time status updates are available through our app.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Payment FAQ Group -->
-                    <div class="faq-group">
-                        <h2 class="category-title">Payment & Pricing</h2>
-                        <div class="faq-questions">
-                            <div class="faq-item">
-                                <div class="faq-question">
-                                    <span>What payment methods are accepted?</span>
-                                    <i class="fas fa-chevron-down icon"></i>
-                                </div>
-                                <div class="faq-answer">
-                                    <p>We accept all major credit and debit cards (Visa, Mastercard, American Express), PayPal, Apple Pay, and Google Pay. For corporate accounts, we offer invoicing options. All transactions are secured with bank-level encryption.</p>
+                                    <p>Charging costs vary by hotel and are clearly displayed before you book. Many hotels offer complimentary charging for guests, while others charge per kWh or a flat fee. Our AI-powered dynamic pricing often finds you better rates than public charging stations—especially during off-peak hours. Hotel guests typically receive preferential rates compared to external users.</p>
                                 </div>
                             </div>
                             
                             <div class="faq-item">
-                                <div class="faq-question">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>What is dynamic pricing?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Our AI analyzes real-time electricity rates, hotel occupancy, and charger availability to offer optimized pricing. This means charging during off-peak hours (like overnight) is typically cheaper than peak times. When you book, we'll show you the best available time slots and their prices so you can choose what works for your schedule and budget.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
                                     <span>Are there any hidden fees?</span>
                                     <i class="fas fa-chevron-down icon"></i>
                                 </div>
                                 <div class="faq-answer">
-                                    <p>Never! We believe in complete transparency. All costs, including accommodation, charging fees (if any), and taxes are clearly displayed before you confirm your booking. The price you see is the price you pay.</p>
+                                    <p>No. We believe in complete transparency. All costs—accommodation, charging fees, and taxes—are displayed before you confirm your booking. The price you see is the price you pay.</p>
                                 </div>
                             </div>
 
                             <div class="faq-item">
-                                <div class="faq-question">
-                                    <span>Do you offer corporate accounts?</span>
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>Do you offer subscriptions for frequent travelers?</span>
                                     <i class="fas fa-chevron-down icon"></i>
                                 </div>
                                 <div class="faq-answer">
-                                    <p>Yes, we offer tailored corporate solutions with centralized billing, detailed reporting, and special rates for frequent travelers. Contact our business team to set up your corporate account and enjoy simplified expense management.</p>
+                                    <p>Yes! We offer subscription plans for frequent EV travelers and corporate accounts. Subscribers get discounted charging rates, priority booking for high-demand periods, and simplified billing. Contact us for details on individual and business subscription options.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Property Partners FAQ Group -->
+                    <!-- For Hotels & Properties -->
                     <div class="faq-group">
-                        <h2 class="category-title">For Property Partners</h2>
+                        <h2 class="category-title">For Hotels & Properties</h2>
                         <div class="faq-questions">
                             <div class="faq-item">
-                                <div class="faq-question">
-                                    <span>How can my hotel join ElectriStay?</span>
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>Why should my hotel partner with ElectriStay?</span>
                                     <i class="fas fa-chevron-down icon"></i>
                                 </div>
                                 <div class="faq-answer">
-                                    <p>We're always looking for quality hotel partners! Click "List Your Property" to start the application process. We'll assess your property, help plan charging infrastructure if needed, and guide you through our onboarding process. Most properties go live within 30 days.</p>
+                                    <p>EV adoption is growing rapidly, and travelers increasingly seek charging-ready accommodations. Partnering with ElectriStay helps you attract this premium demographic, create a new revenue stream from charging services, enhance your sustainability credentials, and differentiate from competitors. Our platform handles all the complexity of charging reservations and dynamic pricing.</p>
                                 </div>
                             </div>
                             
                             <div class="faq-item">
-                                <div class="faq-question">
-                                    <span>What if my hotel doesn't have EV chargers yet?</span>
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>What commission does ElectriStay charge?</span>
                                     <i class="fas fa-chevron-down icon"></i>
                                 </div>
                                 <div class="faq-answer">
-                                    <p>No problem! We offer comprehensive support for properties looking to install EV charging. Our team provides consultation on equipment selection, installation partners, and can even help arrange financing. We make going electric easy and profitable.</p>
+                                    <p>We charge a competitive 6.5% commission on bookings—significantly lower than traditional OTAs that charge 15-20%. We believe in building sustainable partnerships where hotels keep more of their revenue while gaining access to a growing market of EV travelers.</p>
                                 </div>
                             </div>
 
                             <div class="faq-item">
-                                <div class="faq-question">
-                                    <span>What are the benefits for partner hotels?</span>
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>What if my property doesn't have chargers yet?</span>
                                     <i class="fas fa-chevron-down icon"></i>
                                 </div>
                                 <div class="faq-answer">
-                                    <p>Partner hotels see an average 35% increase in EV guest bookings, higher RevPAR, and improved sustainability credentials. Our platform handles all charging reservations, provides 24/7 technical support, and drives qualified traffic to your property.</p>
+                                    <p>We can help! We provide consultation on charger selection, connect you with installation partners, and guide you through the process. You can register your interest through our "List Your Property" page even if you're still planning your charging infrastructure. We'll work with you to get your property EV-ready.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>How does the hotel integration work?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Our system integrates with your property management system (PMS) to sync room bookings with charging reservations. Guest check-in/check-out times inform our smart scheduling, ensuring chargers are available when needed. We handle the technical complexity—your staff simply needs to direct guests to their reserved charging spot.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Account & Support -->
+                    <div class="faq-group">
+                        <h2 class="category-title">Account & Support</h2>
+                        <div class="faq-questions">
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>How do I create an account?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Click "Sign Up" and enter your email, create a password, and add your vehicle details (make, model, connector type). Having your EV information on file helps us show you compatible charging options and personalize recommendations. You can also sign up with Google or Apple for faster registration.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>Can I modify or cancel my booking?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Yes, you can manage bookings through your account. Our standard policy allows free cancellation up to 48 hours before check-in. Some properties may have different policies, which are clearly shown during booking. Modifications to charging slots can usually be made up until your scheduled charging time.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>What if I have problems with a charger?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Contact our support team immediately through the app or website. We monitor charger status in real-time and can often troubleshoot issues remotely. If there's a hardware problem, we'll coordinate with the hotel and arrange alternative charging. Your satisfaction is guaranteed.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFaq(this)">
+                                    <span>How can I contact ElectriStay?</span>
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>You can reach us through our Contact page, email us at hello@ajitagupta.com, or use the in-app chat for quick support. For partnership inquiries, use the "List Your Property" form. We aim to respond to all inquiries within 24 hours.</p>
                                 </div>
                             </div>
                         </div>
@@ -1039,57 +1077,45 @@
 
     <!-- JavaScript -->
     <script>
-        // Mobile menu functionality
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const overlay = document.getElementById('overlay');
-
-        hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            overlay.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-        });
-
-        overlay.addEventListener('click', function() {
-            hamburger.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // FAQ accordion functionality
-        const faqQuestions = document.querySelectorAll('.faq-question');
+        // FAQ toggle function - called by onclick
+        function toggleFaq(element) {
+            var answer = element.nextElementSibling;
+            element.classList.toggle('active');
+            answer.classList.toggle('active');
+        }
         
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', function() {
-                const answer = this.nextElementSibling;
-                const icon = this.querySelector('.icon');
-                const currentGroup = this.closest('.faq-group');
-                const allQuestionsInGroup = currentGroup.querySelectorAll('.faq-question');
-                const allAnswersInGroup = currentGroup.querySelectorAll('.faq-answer');
-                
-                // Close all other items in the same group
-                allQuestionsInGroup.forEach((q, index) => {
-                    if (q !== this) {
-                        q.classList.remove('active');
-                        allAnswersInGroup[index].classList.remove('active');
-                    }
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            var hamburger = document.getElementById('hamburger');
+            var mobileMenu = document.getElementById('mobileMenu');
+            var overlay = document.getElementById('overlay');
+
+            if (hamburger && mobileMenu && overlay) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    mobileMenu.classList.toggle('active');
+                    overlay.classList.toggle('active');
+                    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
                 });
-                
-                // Toggle current item
-                this.classList.toggle('active');
-                answer.classList.toggle('active');
+
+                overlay.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                var header = document.getElementById('header');
+                if (header) {
+                    if (window.scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                }
             });
         });
     </script>
