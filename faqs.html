@@ -598,6 +598,32 @@
             font-size: 0.9rem;
         }
 
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            transition: all var(--transition-speed) ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+            border-color: var(--accent-color);
+            color: #fff;
+        }
+
         /* Responsive Design */
         @media (max-width: 1200px) {
             .container {
@@ -1035,7 +1061,9 @@
                 <div class="footer-column">
                     <h3>About ElectriStay</h3>
                     <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 15px;">Connecting EV drivers with charging-ready accommodations across Switzerland.</p>
-                    <a href="https://www.linkedin.com/company/electristay" target="_blank" style="color: var(--text-secondary); font-size: 1.2rem;"><i class="fab fa-linkedin-in"></i></a>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/electristay" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
                 </div>
                 <div class="footer-column">
                     <h3>Explore</h3>

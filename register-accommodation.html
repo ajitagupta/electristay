@@ -812,21 +812,23 @@
         }
 
         .social-links a {
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
+            color: var(--text-primary);
             transition: all var(--transition-speed) ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .social-links a:hover {
-            background: var(--gradient-primary);
-            border-color: transparent;
-            transform: translateY(-2px);
+            background: var(--accent-color);
+            transform: translateY(-3px);
+            border-color: var(--accent-color);
+            color: #fff;
         }
         
         .footer-bottom {
@@ -1351,53 +1353,44 @@
         </section>
     </main>
     
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>About ElectriStay</h3>
-                <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;">
-                    Leading the way in sustainable travel by connecting EV drivers with charging-ready accommodations worldwide.
-                </p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About ElectriStay</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 15px;">Connecting EV drivers with charging-ready accommodations across Switzerland.</p>
+                   <div class="social-links">
+                        <a href="https://www.linkedin.com/company/electristay" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="locations.html">Locations</a></li>
+                        <li><a href="evservices.html">EV Services</a></li>
+                        <li><a href="news.html">News</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="faqs.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Partners</h3>
+                    <ul>
+                        <li><a href="register-accommodation.html">List Your Property</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-column">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="locations.html">Locations</a></li>
-                    <li><a href="evservices.html">EV Services</a></li>
-                    <li><a href="news.html">News & Updates</a></li>
-                </ul>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ElectriStay. All rights reserved.</p>
             </div>
-            <div class="footer-column">
-                <h3>Support</h3>
-                <ul>
-                    <li><a href="faqs.html">FAQ</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="#">Partner Resources</a></li>
-                    <li><a href="#">Documentation</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Business</h3>
-                <ul>
-                    <li><a href="#">Partner Program</a></li>
-                    <li><a href="#">Success Stories</a></li>
-                    <li><a href="#">API Access</a></li>
-                    <li><a href="#">Pricing</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 ElectriStay. All rights reserved.</p>
-        </div>
-    </footer>
+        </footer>
 
     <!-- JavaScript -->
     <script>
